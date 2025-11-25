@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinite Carousel</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ccd1d9;
+            overflow: hidden;
+        }
+        .carousel {
+            overflow: hidden;
+            width: 80%;
+            display: flex;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        .image-container {
+            display: flex;
+            width: max-content;
+            animation: scroll 350s linear infinite;
+        }
+        .image-container img {
+            border: 5px solid black;
+            width: 200px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-right: 20px; /* Added gap between images */
+        }
+        @keyframes scroll {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        @media (max-width: 1024px) {
+    .image-container img {
+        width: 160px;
+        margin-right: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .image-container img {
+        width: 120px;
+        margin-right: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .image-container img {
+        width: 100px;
+        margin-right: 10px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="carousel">
+        <div class="image-container">
+            <img src="https://cdn.pixabay.com/photo/2025/10/04/09/27/fern-9872693_1280.jpgg" alt="Image 1">
+            <img src="https://cdn.pixabay.com/photo/2023/02/06/21/14/cows-7772777_1280.jpg" alt="Image 2">
+            <img src="https://cdn.pixabay.com/photo/2025/10/26/14/09/nangchen-9918045_1280.jpg" alt="Image 3">
+            <img src="https://cdn.pixabay.com/photo/2023/11/09/17/45/apple-8378041_1280.jpg" alt="Image 4">
+            <img src="https://cdn.pixabay.com/photo/2025/06/19/16/21/adventure-9669323_1280.jpg" alt="Image 5">
+            <img src="https://cdn.pixabay.com/photo/2025/10/02/15/18/sheikh-zayed-grand-mosque-9868660_1280.jpg" alt="Image 6">
+            <img src="https://cdn.pixabay.com/photo/2025/09/29/11/48/feather-9862263_1280.jpg" alt="Image 7">
+            <img src="https://cdn.pixabay.com/photo/2025/07/16/15/01/karlsbad-9718003_1280.jpg" alt="Image 8">
+            <img src="https://cdn.pixabay.com/photo/2025/07/20/08/07/alley-9723861_1280.jpg" alt="Image 9">
+            <img src="https://cdn.pixabay.com/photo/2025/09/04/05/38/leaves-9814751_1280.jpg" alt="Image 10">
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const container = document.querySelector(".image-container");
+            const images = Array.from(document.querySelectorAll(".image-container img"));
+            
+            // Clone images 10 times for a perfect loop
+            for (let i = 0; i < 50; i++) {
+                images.forEach(img => {
+                    let clone = img.cloneNode(true);
+                    container.appendChild(clone);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
